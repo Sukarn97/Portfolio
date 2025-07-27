@@ -1,15 +1,55 @@
-# React + TypeScript + Vite
+# Portfolio Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern portfolio built with **React**, **TypeScript**, and **Vite**. This project showcases your work, experience, and skills with a fast, responsive, and visually appealing web application.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡️ Fast development with Vite
+- 🛠️ Type-safe codebase using TypeScript
+- 🎨 Beautiful UI and interactive sections
+- 📱 Responsive design for all devices
+- 🧩 Modular React components
+- 🖼️ Asset management for images, models, and videos
+- ✨ ESLint integration for code quality
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- pnpm (or npm/yarn)
+
+### Installation
+
+```bash
+pnpm install
+```
+
+### Running Locally
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to view the app.
+
+### Building for Production
+
+```bash
+pnpm build
+```
+
+## Project Structure
+
+```
+src/            # Source code (React components, styles, etc.)
+public/         # Static assets (images, models, videos)
+models/         # 3D models for interactive sections
+```
+
+## ESLint & Code Quality
+
+This project uses recommended ESLint rules for React and TypeScript. For production, enable type-aware lint rules:
 
 ```js
 export default tseslint.config([
@@ -18,14 +58,11 @@ export default tseslint.config([
     files: ['**/*.{ts,tsx}'],
     extends: [
       // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
       ...tseslint.configs.recommendedTypeChecked,
       // Alternatively, use this for stricter rules
       ...tseslint.configs.strictTypeChecked,
       // Optionally, add this for stylistic rules
       ...tseslint.configs.stylisticTypeChecked,
-
       // Other configs...
     ],
     languageOptions: {
@@ -50,6 +87,37 @@ export default tseslint.config([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
+
+## Customization
+
+- Update images and models in the `public/` and `models/` folders.
+- Modify sections and components in `src/sections/` and `src/components/`.
+
+## Credits
+
+- Built with [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), and [Vite](https://vitejs.dev/).
+- Icons and assets from various sources (see `public/images/`).
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
     extends: [
       // Other configs...
       // Enable lint rules for React
